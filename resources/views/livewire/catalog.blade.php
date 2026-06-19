@@ -70,9 +70,7 @@
                 @endforeach
             </div>
 
-            <div class="pagination">
-                {{ $books->links() }}
-            </div>
+            {{ $books->links('vendor.pagination.custom') }}
         @endif
     </div>
 </div>
