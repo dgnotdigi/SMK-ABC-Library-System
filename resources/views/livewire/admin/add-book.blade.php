@@ -55,6 +55,18 @@
                 <textarea id="description" rows="3" wire:model="description"></textarea>
             </div>
 
+            <div class="field">
+                <label for="coverImage">Cover image</label>
+                <input type="file" id="coverImage" wire:model="coverImage" accept="image/*" class="file-input" />
+                @error('coverImage') <div class="hint" style="color:var(--red);">{{ $message }}</div> @enderror
+
+                @if ($coverImage)
+                    <div style="margin-top:10px;">
+                        <img src="{{ $coverImage->temporaryUrl() }}" alt="Cover preview" class="cover-preview" />
+                    </div>
+                @endif
+            </div>
+
             @if ($successMessage)
                 <div class="success-banner">{{ $successMessage }}</div>
             @endif
