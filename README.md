@@ -1,11 +1,9 @@
-<<<<<<< HEAD
-# Oakridge School Library System (Laravel + Herd)
+# SMK ABC Library System
 
-A full-stack library management system: catalog search, student self-checkout,
+A full-stack library management system for SMK ABC: catalog search, student self-checkout,
 holds/reservations, overdue tracking with fines, and librarian reports.
 
-This is a Laravel 11 rebuild of the original Node.js version, built for
-**[Laravel Herd](https://herd.laravel.com)** with MySQL.
+Built with Laravel 11 and Livewire, designed to run on **[Laravel Herd](https://herd.laravel.com)** with MySQL.
 
 ## What's inside
 
@@ -13,30 +11,19 @@ This is a Laravel 11 rebuild of the original Node.js version, built for
 - **Database:** MySQL (via Herd's bundled MySQL service)
 - **Auth:** custom session-based login (own controller + views, Laravel's `Auth` facade underneath)
 - **Frontend:** Blade + Livewire 3 (interactive, no separate JS build step)
-- **Styling:** plain CSS, no Tailwind/build pipeline — same design system as the original
+- **Styling:** plain CSS, no Tailwind/build pipeline
 
 Demo data: **5,200 books**, 2 staff accounts, 40 student accounts, and a mix of
 active/overdue checkouts and holds so reports have something to show.
-
-## A note on how this was built
-
-I don't have Composer or access to packagist.org in my working environment, so I
-wasn't able to run `composer install` or boot-test this the way I could with the
-Node.js version. Every PHP file has been syntax-checked with `php -l`, and I've
-traced through the routing, model bindings, and Livewire wiring carefully — but
-**you'll be the one running this for the first time**. If something doesn't boot,
-the error message Laravel/Herd gives you will be the fastest way to track it down,
-and I'm glad to help debug from there.
 
 ## Setup with Herd
 
 ### 1. Get the project into place
 
-Unzip this project somewhere Herd can see it — typically `~/Herd` or wherever
-you've configured Herd's sites path. Then, from Herd's app or terminal:
+Place the project in your Herd sites directory (typically `~/Herd`), then run:
 
 ```bash
-cd oakridge-library
+cd smk-abc-library
 composer install
 ```
 
@@ -51,7 +38,7 @@ php artisan key:generate
 
 Herd's bundled MySQL listens on `127.0.0.1:3306` with username `root` and an
 empty password by default. The `.env.example` is already set up for that. If
-you've customized Herd's MySQL credentials, update `DB_USERNAME`/`DB_PASSWORD`
+you've customised Herd's MySQL credentials, update `DB_USERNAME`/`DB_PASSWORD`
 in `.env` to match.
 
 ### 3. Create the database
@@ -59,7 +46,7 @@ in `.env` to match.
 Using Herd's MySQL (via the Herd UI's "Database" tab, or the `mysql` CLI):
 
 ```sql
-CREATE DATABASE oakridge_library;
+CREATE DATABASE smk_abc_library;
 ```
 
 Make sure `DB_DATABASE` in `.env` matches whatever you name it.
@@ -77,11 +64,11 @@ so re-running `db:seed` won't duplicate anything.
 ### 5. Point Herd at the site
 
 Herd auto-detects Laravel projects in its configured sites directory and serves
-them at `http://<folder-name>.test`. If your folder is named `oakridge-library`,
-that's `http://oakridge-library.test`. Update `APP_URL` in `.env` to match
+them at `http://<folder-name>.test`. If your folder is named `smk-abc-library`,
+that's `http://smk-abc-library.test`. Update `APP_URL` in `.env` to match
 whatever hostname Herd assigns.
 
-If you'd rather run it manually without Herd's auto-detection:
+If you'd rather run it without Herd's auto-detection:
 
 ```bash
 php artisan serve
@@ -154,16 +141,16 @@ database/
   migrations/            # users, books, checkouts, holds, + Laravel framework tables
   seeders/               # Demo data generators (idempotent)
 resources/views/
-  layouts/ + components/app-layout.blade.php   # Sidebar shell
+  components/layouts/app.blade.php   # Sidebar shell
   auth/login.blade.php
   admin/dashboard.blade.php
   livewire/              # One view per Livewire component
-  vendor/pagination/custom.blade.php   # Styled pagination (replaces Tailwind default)
-public/css/style.css      # Design system — parchment/forest-green/stamp motif
+  vendor/pagination/custom.blade.php   # Styled pagination
+public/css/style.css      # Design system
 config/library.php        # Circulation rule constants (loan days, fine rate, max checkouts)
 ```
 
-## Customizing circulation rules
+## Customising circulation rules
 
 All the circulation constants live in `config/library.php`, and can be overridden
 via `.env` without touching code:
@@ -174,9 +161,7 @@ LIBRARY_FINE_CENTS_PER_DAY=25
 LIBRARY_MAX_CHECKOUTS_PER_STUDENT=5
 ```
 
-## Before deploying to a real school server
-
-This is a working demo, not yet production-hardened. Before deploying for real:
+## Before deploying to a real server
 
 1. **Set `APP_ENV=production` and `APP_DEBUG=false`** in `.env` — debug mode
    leaks stack traces to visitors.
@@ -185,12 +170,7 @@ This is a working demo, not yet production-hardened. Before deploying for real:
 3. **Use HTTPS.** Put this behind a reverse proxy with a TLS certificate if
    Herd isn't your production environment (Herd is a local dev tool).
 4. **Real accounts.** Replace the demo seed accounts with real student/staff
-   records, ideally synced from whatever student information system (SIS)
-   the school already uses.
+   records, ideally synced from the school's student information system.
 5. **Backups.** Set up regular automated MySQL backups.
 6. **Run migrations only — don't re-seed** on a production database that
-   already has real data; the seeders are meant for fresh demo setups.
-=======
-# SMK-ABC-Library-System
-A full-stack school library management system built with Laravel &amp; Livewire — catalog search, student checkout/holds, overdue tracking, and librarian reports for SMK ABC.
->>>>>>> f35d3dbd7c6c5682f5cfba941ffd0b35b0836ec6
+   already has real data.
