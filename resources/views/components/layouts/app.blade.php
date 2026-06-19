@@ -71,6 +71,46 @@
         </div>
     </div>
 
+    <!-- Confirmation Modal -->
+    <div x-data="{
+            show: false,
+            title: '',
+            message: '',
+            pending: null,
+            open(detail) {
+                this.title   = detail.title;
+                this.message = detail.message;
+                this.pending = detail;
+                this.show    = true;
+            },
+            confirm() {
+                if (this.pending) {
+                    Livewire.find(this.pending.id).call(this.pending.method, ...this.pending.params);
+                }
+                this.show    = false;
+                this.pending = null;
+            },
+            cancel() {
+                this.show    = false;
+                this.pending = null;
+            }
+         }"
+         x-cloak
+         x-show="show"
+         class="modal-backdrop"
+         @confirm-action.window="open($event.detail)"
+         @click.self="cancel()"
+         @keydown.escape.window="cancel()">
+        <div class="modal">
+            <h3 class="modal-title" x-text="title"></h3>
+            <p class="modal-message" x-text="message"></p>
+            <div class="modal-actions">
+                <button class="btn btn-outline" @click="cancel()">Cancel</button>
+                <button class="btn btn-accent" @click="confirm()">Confirm</button>
+            </div>
+        </div>
+    </div>
+
     @livewireScripts
 </body>
 </html>

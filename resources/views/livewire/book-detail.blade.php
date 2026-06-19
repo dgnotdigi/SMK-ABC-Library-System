@@ -50,9 +50,23 @@
                 @endif
 
                 @if ($book->isAvailable())
-                    <button wire:click="checkout" class="btn btn-accent">Check out this book</button>
+                    <button type="button" class="btn btn-accent"
+                        @click="$dispatch('confirm-action', {
+                            title: 'Confirm Checkout',
+                            message: @js('Check out "'.$book->title.'"? It will be due back in 14 days.'),
+                            id: $wire.$id,
+                            method: 'checkout',
+                            params: []
+                        })">Check out this book</button>
                 @else
-                    <button wire:click="placeHold" class="btn btn-outline">Place a hold</button>
+                    <button type="button" class="btn btn-outline"
+                        @click="$dispatch('confirm-action', {
+                            title: 'Confirm Hold',
+                            message: @js('Place a hold on "'.$book->title.'"? You\'ll be notified when it\'s available.'),
+                            id: $wire.$id,
+                            method: 'placeHold',
+                            params: []
+                        })">Place a hold</button>
                 @endif
             </div>
         </div>

@@ -34,9 +34,14 @@
                                 @endif
                             </td>
                             <td>
-                                <button wire:click="markReturned({{ $checkout->id }})" class="btn btn-outline btn-sm">
-                                    Mark returned
-                                </button>
+                                <button type="button" class="btn btn-outline btn-sm"
+                                    @click="$dispatch('confirm-action', {
+                                        title: 'Mark as Returned',
+                                        message: @js('Mark "'.$checkout->book->title.'" as returned by '.$checkout->user->full_name.'?'),
+                                        id: $wire.$id,
+                                        method: 'markReturned',
+                                        params: [{{ $checkout->id }}]
+                                    })">Mark returned</button>
                             </td>
                         </tr>
                     @endforeach

@@ -27,7 +27,14 @@
                         @else
                             <span class="tag">Waiting in queue</span>
                         @endif
-                        <button wire:click="cancel({{ $hold->id }})" class="btn btn-outline btn-sm" style="margin-top:12px;">Cancel hold</button>
+                        <button type="button" class="btn btn-outline btn-sm" style="margin-top:12px;"
+                            @click="$dispatch('confirm-action', {
+                                title: 'Cancel Hold',
+                                message: @js('Cancel your hold on "'.$hold->book->title.'"? You will lose your place in the queue.'),
+                                id: $wire.$id,
+                                method: 'cancel',
+                                params: [{{ $hold->id }}]
+                            })">Cancel hold</button>
                     </div>
                 </div>
             @endforeach

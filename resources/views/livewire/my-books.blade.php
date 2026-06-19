@@ -37,8 +37,22 @@
                         @endif
 
                         <div style="display:flex; gap:8px; margin-top:12px;">
-                            <button wire:click="renew({{ $checkout->id }})" class="btn btn-outline btn-sm">Renew</button>
-                            <button wire:click="returnBook({{ $checkout->id }})" class="btn btn-accent btn-sm">Return</button>
+                            <button type="button" class="btn btn-outline btn-sm"
+                                @click="$dispatch('confirm-action', {
+                                    title: 'Renew Book',
+                                    message: @js('Renew "'.$checkout->book->title.'"? This will extend your loan period.'),
+                                    id: $wire.$id,
+                                    method: 'renew',
+                                    params: [{{ $checkout->id }}]
+                                })">Renew</button>
+                            <button type="button" class="btn btn-accent btn-sm"
+                                @click="$dispatch('confirm-action', {
+                                    title: 'Return Book',
+                                    message: @js('Return "'.$checkout->book->title.'"?'.($isOverdue ? ' A late fine will be calculated.' : '')),
+                                    id: $wire.$id,
+                                    method: 'returnBook',
+                                    params: [{{ $checkout->id }}]
+                                })">Return</button>
                         </div>
                     </div>
                 </div>

@@ -71,7 +71,14 @@
                 <div class="success-banner">{{ $successMessage }}</div>
             @endif
 
-            <button type="submit" class="btn btn-accent">Add to catalog</button>
+            <button type="button" class="btn btn-accent"
+                @click="$dispatch('confirm-action', {
+                    title: 'Add Book',
+                    message: 'Add this book to the catalog?',
+                    id: $wire.$id,
+                    method: 'save',
+                    params: []
+                })">Add to catalog</button>
         </form>
     </div>
 </div>
