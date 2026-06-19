@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Oakridge School Library System (Laravel + Herd)
 
 A full-stack library management system: catalog search, student self-checkout,
@@ -189,3 +190,7 @@ This is a working demo, not yet production-hardened. Before deploying for real:
 5. **Backups.** Set up regular automated MySQL backups.
 6. **Run migrations only — don't re-seed** on a production database that
    already has real data; the seeders are meant for fresh demo setups.
+=======
+# SMK-ABC-Library-System
+A full-stack school library management system built with Laravel &amp; Livewire — catalog search, student checkout/holds, overdue tracking, and librarian reports for SMK ABC.
+>>>>>>> f35d3dbd7c6c5682f5cfba941ffd0b35b0836ec6
