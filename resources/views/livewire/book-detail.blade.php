@@ -3,9 +3,13 @@
 
     <div class="panel">
         <div style="display:flex; gap:24px; flex-wrap:wrap;">
-            <div class="book-spine" style="background: {{ $book->cover_color }}; width:140px; height:190px; flex-shrink:0; border-radius:6px; flex-direction:column; align-items:flex-start; justify-content:flex-end; padding:16px;">
-                <span class="call-no" style="font-size:13px;">{{ $book->call_number }}</span>
-            </div>
+            @if ($book->cover_image)
+                <img src="{{ Storage::url($book->cover_image) }}" alt="{{ $book->title }}" class="book-cover-img book-cover-img--detail" />
+            @else
+                <div class="book-spine" style="background: {{ $book->cover_color }}; width:140px; height:190px; flex-shrink:0; border-radius:6px; flex-direction:column; align-items:flex-start; justify-content:flex-end; padding:16px;">
+                    <span class="call-no" style="font-size:13px;">{{ $book->call_number }}</span>
+                </div>
+            @endif
 
             <div style="flex:1; min-width:240px;">
                 <h2 style="font-size:24px; margin-bottom:4px;">{{ $book->title }}</h2>

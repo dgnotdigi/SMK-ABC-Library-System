@@ -47,9 +47,13 @@
             <div class="book-grid">
                 @foreach ($books as $book)
                     <a href="{{ route('catalog.show', $book) }}" class="book-card" style="display:flex; flex-direction:column;" wire:key="book-{{ $book->id }}">
-                        <div class="book-spine" style="background: {{ $book->cover_color }};">
-                            <span class="call-no">{{ $book->call_number }}</span>
-                        </div>
+                        @if ($book->cover_image)
+                            <img src="{{ Storage::url($book->cover_image) }}" alt="{{ $book->title }}" class="book-cover-img" />
+                        @else
+                            <div class="book-spine" style="background: {{ $book->cover_color }};">
+                                <span class="call-no">{{ $book->call_number }}</span>
+                            </div>
+                        @endif
                         <div class="book-card-body">
                             <p class="title">{{ $book->title }}</p>
                             <p class="author">{{ $book->author }}</p>
