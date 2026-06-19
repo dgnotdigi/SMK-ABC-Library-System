@@ -20,6 +20,7 @@ class Book extends Model
         'published_year',
         'description',
         'cover_color',
+        'cover_image',
         'total_copies',
         'available_copies',
     ];
