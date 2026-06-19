@@ -1,4 +1,4 @@
-<x-app-layout :title="'My Holds — SMK ABC Library'">
+<div>
     <div class="page-header">
         <h1>My Holds</h1>
         <p>Books you&rsquo;re waiting on</p>
@@ -33,4 +33,4 @@
             @endforeach
         </div>
     @endif
-</x-app-layout>
+</div>

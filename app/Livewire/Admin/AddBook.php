@@ -62,6 +62,6 @@ class AddBook extends Component
 
     public function render()
     {
-        return view('livewire.admin.add-book');
+        return view('livewire.admin.add-book')->layout('components.layouts.app', ['title' => 'Add a Book — SMK ABC Library']);
     }
 }

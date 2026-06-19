@@ -1,4 +1,4 @@
-<x-app-layout :title="'My Books — SMK ABC Library'">
+<div>
     <div class="page-header">
         <h1>My Books</h1>
         <p>Items currently checked out to you</p>
@@ -64,4 +64,4 @@
             </div>
         </div>
     @endif
-</x-app-layout>
+</div>

@@ -1,4 +1,4 @@
-<x-app-layout :title="'Holds Queue — SMK ABC Library'">
+<div>
     <div class="page-header">
         <h1>Holds Queue</h1>
         <p>Readers waiting for unavailable titles</p>
@@ -34,4 +34,4 @@
             </div>
         </div>
     @endif
-</x-app-layout>
+</div>

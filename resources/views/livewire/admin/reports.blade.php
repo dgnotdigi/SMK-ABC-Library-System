@@ -1,4 +1,4 @@
-<x-app-layout :title="'Reports — SMK ABC Library'">
+<div>
     <div class="page-header">
         <h1>Reports</h1>
         <p>Overdue items, popular titles, and inventory by genre</p>
@@ -62,4 +62,4 @@
             </table>
         </div>
     </div>
-</x-app-layout>
+</div>

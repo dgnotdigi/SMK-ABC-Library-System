@@ -57,6 +57,6 @@ class BookDetail extends Component
         return view('livewire.book-detail', [
             'activeHoldsCount' => $this->book->waitingHolds()->count(),
             'nextDue' => $this->book->nextDueDate(),
-        ]);
+        ])->layout('components.layouts.app', ['title' => $this->book->title.' — SMK ABC Library']);
     }
 }

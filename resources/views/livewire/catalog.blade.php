@@ -1,4 +1,4 @@
-<x-app-layout :title="'Catalog — SMK ABC Library'">
+<div>
     <div class="page-header">
         <h1>Browse the Catalog</h1>
         <p>{{ auth()->user()->isAdmin() ? 'Manage and search' : 'Search' }} the full collection</p>
@@ -71,4 +71,4 @@
             </div>
         @endif
     </div>
-</x-app-layout>
+</div>

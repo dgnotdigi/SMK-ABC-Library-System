@@ -1,4 +1,4 @@
-<x-app-layout :title="'Active Checkouts — SMK ABC Library'">
+<div>
     <div class="page-header">
         <h1>Active Checkouts</h1>
         <p>Every book currently out, sorted by due date</p>
@@ -44,4 +44,4 @@
             </div>
         </div>
     @endif
-</x-app-layout>
+</div>

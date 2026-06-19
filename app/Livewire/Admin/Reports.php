@@ -49,6 +49,6 @@ class Reports extends Component
             'overdue' => $overdue,
             'mostBorrowed' => $mostBorrowed,
             'inventory' => $inventory,
-        ]);
+        ])->layout('components.layouts.app', ['title' => 'Reports — SMK ABC Library']);
     }
 }

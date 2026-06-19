@@ -31,6 +31,6 @@ class ActiveCheckouts extends Component
             ->orderBy('due_at')
             ->get();
 
-        return view('livewire.admin.active-checkouts', ['checkouts' => $checkouts]);
+        return view('livewire.admin.active-checkouts', ['checkouts' => $checkouts])->layout('components.layouts.app', ['title' => 'Active Checkouts — SMK ABC Library']);
     }
 }

@@ -1,4 +1,4 @@
-<x-app-layout :title="$book->title . ' — SMK ABC Library'">
+<div>
     <a href="{{ route('catalog.index') }}" class="btn btn-outline btn-sm" style="margin-bottom: 18px; display: inline-flex;">&larr; Back to catalog</a>
 
     <div class="panel">
@@ -53,4 +53,4 @@
             </div>
         </div>
     </div>
-</x-app-layout>
+</div>

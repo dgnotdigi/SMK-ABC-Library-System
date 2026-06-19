@@ -66,6 +66,6 @@ class MyBooks extends Component
         return view('livewire.my-books', [
             'checkouts' => $checkouts,
             'history' => $history,
-        ]);
+        ])->layout('components.layouts.app', ['title' => 'My Books — SMK ABC Library']);
     }
 }

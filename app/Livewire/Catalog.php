@@ -83,6 +83,6 @@ class Catalog extends Component
         return view('livewire.catalog', [
             'books' => $books,
             'genreOptions' => $this->genres(),
-        ]);
+        ])->layout('components.layouts.app', ['title' => 'Catalog — SMK ABC Library']);
     }
 }

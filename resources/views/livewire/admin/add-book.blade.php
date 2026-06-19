@@ -1,4 +1,4 @@
-<x-app-layout :title="'Add a Book — SMK ABC Library'">
+<div>
     <div class="page-header">
         <h1>Add a Book</h1>
         <p>Add a new title to the catalog</p>
@@ -62,4 +62,4 @@
             <button type="submit" class="btn btn-accent">Add to catalog</button>
         </form>
     </div>
-</x-app-layout>
+</div>

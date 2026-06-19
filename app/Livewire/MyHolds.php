@@ -32,6 +32,6 @@ class MyHolds extends Component
             ->orderBy('requested_at')
             ->get();
 
-        return view('livewire.my-holds', ['holds' => $holds]);
+        return view('livewire.my-holds', ['holds' => $holds])->layout('components.layouts.app', ['title' => 'My Holds — SMK ABC Library']);
     }
 }

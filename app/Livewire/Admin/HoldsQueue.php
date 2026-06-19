@@ -14,6 +14,6 @@ class HoldsQueue extends Component
             ->orderBy('requested_at')
             ->get();
 
-        return view('livewire.admin.holds-queue', ['holds' => $holds]);
+        return view('livewire.admin.holds-queue', ['holds' => $holds])->layout('components.layouts.app', ['title' => 'Holds Queue — SMK ABC Library']);
     }
 }
