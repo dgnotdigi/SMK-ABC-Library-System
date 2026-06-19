@@ -8,11 +8,21 @@ use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends Seeder
 {
-    protected array $firstNames = ['Maria', 'James', 'Wei', 'Aisha', 'Carlos', 'Yuki', 'Emma', 'David', 'Fatima', 'Liam',
-        'Sofia', 'Noah', 'Priya', 'Lucas', 'Amara', 'Daniel', 'Mei', 'Omar', 'Grace', 'Ravi'];
+    protected array $firstNames = [
+        'Ahmad', 'Muhammad', 'Amirul', 'Haziq', 'Izzat', 'Faris', 'Syafiq', 'Irfan', 'Hafiz', 'Azri',
+        'Nurul', 'Siti', 'Nur', 'Aina', 'Farah', 'Nadia', 'Aisha', 'Liyana', 'Hanis', 'Sofea',
+        'Wei Jie', 'Kai Xian', 'Mei Ling', 'Hui Ling', 'Jun Hao',
+        'Arjun', 'Priya', 'Kavitha', 'Rajan', 'Suresh',
+    ];
 
-    protected array $lastNames = ['Tan', 'Garcia', 'Chen', 'Khan', 'Nguyen', 'Smith', 'Patel', 'Kim', 'Silva', 'Brown',
-        'Lim', 'Rahman', 'Ibrahim', 'Lopez', 'Wong', 'Adeyemi', 'Costa', 'Hassan', 'Park', 'Murphy'];
+    protected array $lastNames = [
+        'bin Abdullah', 'bin Razak', 'bin Hamid', 'bin Yusof', 'bin Ismail',
+        'bin Othman', 'bin Zainuddin', 'bin Kamaruddin', 'bin Nordin', 'bin Ghazali',
+        'binti Ahmad', 'binti Hassan', 'binti Ibrahim', 'binti Mohd', 'binti Aziz',
+        'binti Jalil', 'binti Rahim', 'binti Saad', 'binti Musa', 'binti Idris',
+        'Tan', 'Lim', 'Wong', 'Ng', 'Lee',
+        'a/l Krishnan', 'a/p Muthu', 'a/l Raju', 'a/p Selvi', 'a/l Kumar',
+    ];
 
     public function run(): void
     {
@@ -25,14 +35,14 @@ class UserSeeder extends Seeder
         User::create([
             'username' => 'admin',
             'password' => Hash::make('admin123'),
-            'full_name' => 'Mrs. Alvarez (Librarian)',
+            'full_name' => 'Puan Rozita binti Hamdan (Pustakawan)',
             'role' => 'admin',
         ]);
 
         User::create([
             'username' => 'libstaff',
             'password' => Hash::make('staff123'),
-            'full_name' => 'Mr. Owusu (Library Aide)',
+            'full_name' => 'Encik Faizal bin Sulaiman (Pembantu Perpustakaan)',
             'role' => 'admin',
         ]);
 
@@ -45,7 +55,7 @@ class UserSeeder extends Seeder
                 'password' => Hash::make('student123'),
                 'full_name' => "{$first} {$last}",
                 'role' => 'student',
-                'grade' => 'Grade '.random_int(6, 12),
+                'grade' => 'Tingkatan '.random_int(1, 5),
             ]);
         }
 
