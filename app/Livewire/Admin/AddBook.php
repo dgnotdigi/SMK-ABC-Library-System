@@ -5,9 +5,12 @@ namespace App\Livewire\Admin;
 use App\Models\Book;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class AddBook extends Component
 {
+    use WithFileUploads;
+
     #[Validate('required|string|max:255')]
     public string $title = '';
 
@@ -35,12 +38,20 @@ class AddBook extends Component
     #[Validate('nullable|string')]
     public string $description = '';
 
+    #[Validate('nullable|image|max:2048')]
+    public $coverImage = null;
+
     public ?string $successMessage = null;
 
     public function save(): void
     {
         $this->successMessage = null;
         $validated = $this->validate();
+
+        $coverPath = null;
+        if ($this->coverImage) {
+            $coverPath = $this->coverImage->store('covers', 'public');
+        }
 
         Book::create([
             'title' => $validated['title'],
@@ -53,10 +64,11 @@ class AddBook extends Component
             'description' => $validated['description'] ?: null,
             'total_copies' => $validated['total_copies'],
             'available_copies' => $validated['total_copies'],
+            'cover_image' => $coverPath,
         ]);
 
         $this->successMessage = 'Book added to the catalog.';
-        $this->reset(['title', 'author', 'genre', 'isbn', 'call_number', 'publisher', 'published_year', 'description']);
+        $this->reset(['title', 'author', 'genre', 'isbn', 'call_number', 'publisher', 'published_year', 'description', 'coverImage']);
         $this->total_copies = 1;
     }
 
